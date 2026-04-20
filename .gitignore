@@ -1,6 +1,11 @@
 # Gradle files - O **/ garante que ignore em todas as subpastas
 **/.gradle/
 **/build/
+**/gradle-daemon-jvm.properties
+.gradle/
+**/gradle/wrapper/gradle-wrapper.jar
+aula-*/gradlew
+aula-*/gradlew.bat
 
 # Local configuration file
 local.properties
