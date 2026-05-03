@@ -19,11 +19,25 @@ class MainActivity : AppCompatActivity() {
         val tvQuantity = findViewById<TextView>(R.id.tv_quantity)
         val btnAdd = findViewById<Button>(R.id.btn_add)
 
+        if (savedInstanceState != null) {
+            orderCounter = savedInstanceState.getInt("order", 0)
+            tvQuantity.text = "$orderCounter"
+            Log.d(TAG, "Garçom leu o bloquinho! Pedidos recuperados: $orderCounter")
+        } else {
+            Log.d(TAG, "Primeira vez! Sem anotações")
+        }
+
         btnAdd.setOnClickListener {
             orderCounter++
             tvQuantity.text = "$orderCounter"
-            Log.d(TAG, "Novo pedido! Total: $tvQuantity")
+            Log.d(TAG, "Novo pedido! Total: $orderCounter")
         }
+    }
+
+    override fun onSaveInstanceState(outState: Bundle) {
+        super.onSaveInstanceState(outState)
+        outState.putInt("order", orderCounter)
+        Log.d(TAG, "Garçom anotou no bloquinho! $orderCounter pedidos")
     }
 
     override fun onStart() {
